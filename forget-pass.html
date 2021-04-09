@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Forget-pass AutoBot</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="css/styleregis.css">
+    <style>
+        /* The container */
+        .cont {
+          display: block;
+          position: relative;
+          padding-left: 35px;
+          margin-bottom: 12px;
+          cursor: pointer;
+          font-size: 22px;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+        }
+        
+        /* Hide the browser's default radio button */
+        .cont input {
+          position: absolute;
+          opacity: 0;
+          cursor: pointer;
+        }
+        
+        /* Create a custom radio button */
+        .checkmark {
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 25px;
+          width: 25px;
+          background-color: #eee;
+          border-radius: 50%;
+        }
+        
+        /* On mouse-over, add a grey background color */
+        .container:hover input ~ .checkmark {
+          background-color: #ccc;
+        }
+        
+        /* When the radio button is checked, add a blue background */
+        .container input:checked ~ .checkmark {
+          background-color: #2196F3;
+        }
+        
+        /* Create the indicator (the dot/circle - hidden when not checked) */
+        .checkmark:after {
+          content: "";
+          position: absolute;
+          display: none;
+        }
+        
+        /* Show the indicator (dot/circle) when checked */
+        .container input:checked ~ .checkmark:after {
+          display: block;
+        }
+        
+        /* Style the indicator (dot/circle) */
+        .container .checkmark:after {
+             top: 9px;
+            left: 9px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: white;
+        }
+        </style>
+</head>
+<body>
+
+        <section class="signup">
+            <!-- <img src="images/signup-bg.jpg" alt=""> -->
+            <!--idห้ามซ้ำ-->
+            <div class="container">
+                <div class="signup-content">
+                    <form method="POST" id="signup-form" class="signup-form">
+                        <div class="main">
+                           <center> <a href="index.html">
+                                <img src="images/logo.png" alt="AutoBot-Trader">
+                            </a></center>
+                        <h2 class="form-title">ลืมรหัสผ่าน</h2>
+                          
+                        <label class="cont">อีเมล
+                            <input type="email"  name="email">
+                            <span class="checkmark"></span>
+                          </label>
+                        <div class="form-group">
+                            <input type="email" class="form-input" name="mail" id="mail" placeholder="อีเมล"/>
+                        </div>
+                        <label class="cont">เบอร์โทรศัพท์
+                            <input type="radio"  name="radio">
+                            <span class="checkmark"></span>
+                          </label>
+                        <div class="form-group">
+                            <input type="text" class="form-input" name="names" id="names" placeholder="เบอร์โทรศัพท์"/>
+                        </div>
+                        <div class="form-group">    
+                          <button id="resetPassword">Confirm</button>
+                        </div>
+                        </div>
+                    </form>
+                    <p class="loginhere">
+                         <a href="login.html" class="loginhere-link">เข้าสู่ระบบ</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- JS -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="js/main.js"></script>
+   <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-database.js"></script>
+
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/8.2.3/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  var firebaseConfig = {
+    apiKey: "AIzaSyBZfiJoUbxjhPDRcEx0TImHot90-wFqDnA",
+    authDomain: "webautobot-e3ea8.firebaseapp.com",
+    projectId: "webautobot-e3ea8",
+    storageBucket: "webautobot-e3ea8.appspot.com",
+    messagingSenderId: "576493339720",
+    appId: "1:576493339720:web:3c87735e3613c1a8ef847d",
+    measurementId: "G-FBD81CGWKC"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+<script src="./reset.js"></script>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>
