@@ -1,7 +1,4 @@
-<?php
-session_start();
-include('server.php'); 
-?>
+<?php include('server.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,28 +26,17 @@ include('server.php');
                 <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt="image"></a>
               </div>
               <p class="login-card-description">เข้าสู่ระบบ</p>
-              <form action="login_db.php" method="POST">
-                      <?php include('errors.php'); ?>
-                      <?php if(isset($_SESSION['error'])) : ?>
-                                <div class = "error">
-                                    <h3 style="color:red">
-                                        <?php
-                                        echo $_SESSION['error'];
-                                        unset($_SESSION['error']);
-                                        ?>
-                                    </h3>
-                                </div>
-                      <?php endif ?>
+              <form action="#!">
                   <div class="form-group">
                     <label for="email" class="sr-only">อีเมล</label>
-                    <input type="email" name="email" id="email" class="form-control" placeholder="อีเมล์">
+                    <input type="email" name="loginusername" id="loginusername" class="form-control" placeholder="ชื่อผู้ใช้">
                   </div>
                   <div class="form-group mb-4">
                     <label for="password" class="sr-only">รหัสผ่าน</label>
-                    <input type="password" name="password" id="password" class="form-control" placeholder="รหัสผ่าน">
+                    <input type="password" name="loginpassword" id="loginpassword" class="form-control" placeholder="รหัสผ่าน">
                   </div>
                   <div>
-                    <button name="login_user" id="login_user" class="btn btn-block login-btn mb-4"  value="ล็อคอิน">ล็อคอิน</button>
+                    <button name="Btlogin" id="Btlogin" class="btn btn-block login-btn mb-4" type="button" value="ล็อคอิน">ล็อคอิน</button>
                   </div>
                 </form>
                 <a href="forget-pass1.html" class="forgot-password-link">ลืมรหัสผ่าน?</a>
@@ -66,6 +52,6 @@ include('server.php');
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-
+<script src="./funtionlogin.js"></script>
 </body>
 </html>

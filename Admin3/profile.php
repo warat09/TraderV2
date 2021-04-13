@@ -174,6 +174,20 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
+                            
+                        
+                        <!---- notification -------->
+                            <?php if(isset($_SESSION['success'])) : ?>
+                                <div class = "success">
+                                    <h3>
+                                        <?php
+                                        echo $_SESSION['success'];
+                                        unset($_SESSION['success']);
+                                        ?>
+                                    </h3>
+                                </div>
+                                <?php endif ?>
+                    
                             <?php if(isset($_SESSION['email'])) : ?>
                                 <p>welcome <strong><?php echo $_SESSION['email']; ?></strong></p>
                                 <p><a herf = "profile.php?logout='1'" style="color: red;"></a></p>
