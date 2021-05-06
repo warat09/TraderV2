@@ -49,6 +49,18 @@ include('server.php');
                         </h3>
                         </div>
                         <?php endif ?>
+
+                        <!--------------แจ้งไม่error------------------>
+                        <?php if (isset($_SESSION['noterror'])) : ?>
+                        <div class="noterror">
+                        <h3 style="color:green">
+                             <?php 
+                                 echo $_SESSION['noterror'];
+                                 unset($_SESSION['noterror']);
+                            ?>
+                        </h3>
+                        </div>
+                        <?php endif ?>
                         
                         <div class="form-group">
                             <input type="text" class="form-input" name="names" id="names" placeholder="ชื่อ"/>

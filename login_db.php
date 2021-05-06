@@ -29,7 +29,7 @@
             if(count($errors) == 0){
                 //$password = md5($passord);
                 //save in sql
-                $sql =  "SELECT * FROM users WHERE EMAIL='$email' AND PASSWORDS = '$password'";
+                $sql =  "SELECT * FROM users WHERE EMAIL='$email' AND PASSWORD = '$password'";
                 $result = mysqli_query($conn, $sql);
                 
                 if(mysqli_num_rows($result)==1){
