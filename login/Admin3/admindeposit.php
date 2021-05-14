@@ -56,7 +56,12 @@ function filterTable($query)
         </style>
     </head>
     <body>
-        
+    <style>
+            
+             tr{cursor: pointer; transition: all .25s ease-in-out}
+            .selected{background-color: red; font-weight: bold; color: #fff;}
+            
+        </style>
         <form method="post">
             <input type="text" name="valueToSearch" placeholder="ช่องค้นหา"><br><br>
             <input type="submit" name="search" value="ค้นหา"><br><br>
@@ -74,7 +79,7 @@ function filterTable($query)
                         </div>
                         <?php endif ?>  
             
-            <table>
+            <table id="table">
                 <tr>
                     <th>DATEANDHR</th>
                     <th>EMAIL</th>
@@ -85,7 +90,7 @@ function filterTable($query)
                 </tr>
 
       <!-- populate table from mysql database -->
-     
+               
                 <?php while($row = mysqli_fetch_array($search_result)):?>
                     <?php $nameimage = $row['IMAGE'];
                     $TT = "%20"
@@ -97,6 +102,8 @@ function filterTable($query)
                     <td><label><?php echo $row['DATE'];?></label></td>
                     <td><label><?php echo $row['HM'];?></label></td>
                     <td><p onclick="window.location.href='payment/<?php echo  $TT . $nameimage;?>'"><?php echo $row['IMAGE'];?></p></td>
+                    <td><a href ="admindeposit_pc.php?datehr=<?php echo $row['DATEANDHR'];?>&email=<?php echo $row['EMAIL'];?>&money=<?php echo $row['MONEY'];?>&date=<?php echo $row['DATE'];?>&hm=<?php echo $row['HM'];?>&image=<?php echo $nameimage;?>"  >ยืนยัน</a></td>
+                    
     
                     
                 </tr>

@@ -1,5 +1,19 @@
 <?php
-
+session_start();
+include('db_conn.php');
+    $email = mysqli_real_escape_string($conn , $_SESSION['email']);
+    $sql =  "SELECT * FROM admins WHERE EMAIL='$email'";
+    $result = mysqli_query($conn, $sql);
+    $results = mysqli_fetch_assoc($result);
+    if(!isset($_SESSION['email'])){
+        $_SESSION['error'] = "กรุณาเข้าสู่ระบบ";
+        header('location: ../login.php');
+    }
+    if(isset($_POST['logout'])){
+        session_destroy();
+        unset($_SESSION['email']);
+        header('location: ../login.php');
+    }
 
 if(isset($_POST['search']))
 {
@@ -63,6 +77,7 @@ function filterTable($query)
             <input type="submit" name="userall" value="ผู้ใช้งานทั้งหมด">
             <input type="submit" name="deposit" value="ฝากเงิน">
             <input type="submit" name="withdrawn" value="ถอนเงิน"><br><br>
+            <?php echo "จำนวนเงินที่ฝาก" .$results['money'];?>
             <?php if (isset($_SESSION['error'])) : ?>
                         <div class="error">
                         <h3 style="color:red">

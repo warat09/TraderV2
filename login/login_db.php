@@ -24,9 +24,6 @@
             $_SESSION['error'] = "กรุณากรอกอีเมล์และพาสเวิรด์";
             header('location: login.php');
         }
-        else if($_POST['email']=="beba@com"&&$_POST['password']=="123"){
-            header("location: ./Admin3/adminprofile.php");
-        }
         else{
             if(count($errors) == 0){
                 //$password = md5($passord);
@@ -34,12 +31,21 @@
                 $sql =  "SELECT * FROM users WHERE EMAIL='$email' AND PASSWORD = '$password'";
                 $result = mysqli_query($conn, $sql);
                 $results = mysqli_fetch_assoc($result);
+
+                $sqladmin =  "SELECT * FROM adminS WHERE email='$email' AND password = '$password'";
+                $resultadmin = mysqli_query($conn,$sqladmin);
+                $results = mysqli_fetch_assoc($resultadmin);
                 
                 
                 if(mysqli_num_rows($result)==1){
                     $_SESSION['email'] = $email;
                     $_SESSION['success'] = "เข้าสู่ระบบสำเร็จ";
                     header("location: ./Admin3/profile.php");
+                }
+                else if(mysqli_num_rows($resultadmin)==1){
+                    $_SESSION['email'] = $email;
+                    $_SESSION['success'] = "เข้าสู่ระบบสำเร็จ";
+                    header("location: ./Admin3/adminprofile.php");
                 }
                 else{
                     array_push($errors,"อีเมล์หรือรหัสผิด");
