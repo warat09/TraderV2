@@ -14,6 +14,8 @@ $sql =  "SELECT * FROM users WHERE EMAIL='$email_check'";
 $result = mysqli_query($conn, $sql);
 $results = mysqli_fetch_assoc($result);
 
+$moneyuser = $results['MONEY'];
+
 
 date_default_timezone_set("Asia/Bangkok");
 
@@ -44,6 +46,11 @@ if(isset($_POST['submit'])){
     else if($results['PASSWORD'] != $password){
         array_push($errors,"รหัสผ่านไม่ถูกต้อง");
         $_SESSION['error'] = "รหัสผ่านไม่ถูกต้อง";
+        header("location: withdrawn.php");
+    }
+    else if($money>$moneyuser){
+        array_push($errors,"เงินในบัญชีไม่เพียงพอ");
+        $_SESSION['error'] = "เงินในบัญชีไม่เพียงพอ";
         header("location: withdrawn.php");
     }
     else{

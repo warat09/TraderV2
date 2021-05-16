@@ -103,6 +103,7 @@ function filterTable($query)
                     <td><label><?php echo $row['HM'];?></label></td>
                     <td><p onclick="window.location.href='payment/<?php echo  $TT . $nameimage;?>'"><?php echo $row['IMAGE'];?></p></td>
                     <td><a href ="admindeposit_pc.php?datehr=<?php echo $row['DATEANDHR'];?>&email=<?php echo $row['EMAIL'];?>&money=<?php echo $row['MONEY'];?>&date=<?php echo $row['DATE'];?>&hm=<?php echo $row['HM'];?>&image=<?php echo $nameimage;?>"  >ยืนยัน</a></td>
+                    <td><a href ="admindeposit_pc_Delete.php?datehr=<?php echo $row['DATEANDHR'];?>&email=<?php echo $row['EMAIL'];?>&money=<?php echo $row['MONEY'];?>&date=<?php echo $row['DATE'];?>&hm=<?php echo $row['HM'];?>&image=<?php echo $nameimage;?>"  >ลบข้อมูล</a></td>
                     
     
                     

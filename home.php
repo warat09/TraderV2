@@ -134,7 +134,7 @@ $count = $values['total'];
 
 						
 						</ul>
-						<button class="btn btn-medium" onclick="location.href='http://mistersigz.thddns.net:7572/Beebas/login/login.php'">เข้าสู่ระบบ</button>
+						<button class="btn btn-medium" onclick="location.href='login/login.php'">เข้าสู่ระบบ</button>
 					</div>		
 				</div>
 			</div>
@@ -874,7 +874,29 @@ $count = $values['total'];
 								</div>								
 								
 							</div>								
-						</div>								
+						</div>	
+						<?php include('errors.php'); ?>
+                      <?php if(isset($_SESSION['error'])) : ?>
+                                <div class = "error">
+                                    <h3 style="color:red">
+                                        <?php
+                                        echo $_SESSION['error'];
+                                        unset($_SESSION['error']);
+                                        ?>
+                                    </h3>
+                                </div>
+                      <?php endif ?>
+                      <!--------------แจ้งไม่error------------------>
+                      <?php if (isset($_SESSION['noterror'])) : ?>
+                        <div class="noterror">
+                        <h3 style="color:green">
+                             <?php 
+                                 echo $_SESSION['noterror'];
+                                 unset($_SESSION['noterror']);
+                            ?>
+                        </h3>
+                        </div>
+                        <?php endif ?>							
 						<div class="row wow fadeInRight" data-wow-duration="1s" data-wow-delay="800ms">
 							<form action = "sentweb.php" method = "post">
 								<div>				

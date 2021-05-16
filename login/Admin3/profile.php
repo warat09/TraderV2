@@ -5,6 +5,11 @@
     $sql =  "SELECT * FROM users WHERE EMAIL='$email'";
     $result = mysqli_query($conn, $sql);
     $results = mysqli_fetch_assoc($result);
+    $image = $results['profile_image'];
+    $name = $results['NAME'];
+    $surname = $results['SURNAME'];
+    $_SESSION['money'] = $results['MONEY'];
+  
     if(!isset($_SESSION['email'])){
         $_SESSION['error'] = "กรุณาเข้าสู่ระบบ";
         header('location: ../login.php');
@@ -17,7 +22,6 @@
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <!-- Required meta tags-->
     <meta charset="UTF-8">
@@ -47,343 +51,332 @@
     <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
     <link href="vendor/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="all">
 
+    <!---NEW-->
+	
+    <link href="css/news/bootstrap.min.css" rel="stylesheet">
+    <link href="css/news/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="css/news/animate.min.css" rel="stylesheet" >	
+    <link href="css/news/font-awesome.min.css" rel="stylesheet">	
+    <link href="css/news/prettyPhoto.css" rel="stylesheet">
+
+    <link href="css/news/theme.css" rel="stylesheet">	
+    <link href="css/news/responsive.css" rel="stylesheet">
+    <link href="css/news/colors/blue.css" rel="stylesheet" class="colors">
+ <!-- Modernizer -->
+ <script src="js/news/modernizer.js"></script>
+
+
     <!-- Main CSS-->
     <link href="css/theme.css" rel="stylesheet" media="all">
+
+
+        <!-- load CSS -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300">  <!-- Google web font "Open Sans" -->
+        <link rel="stylesheet" href="2097_pop/css/bootstrap.min.css">                                  <!-- https://getbootstrap.com/ -->
+        <link rel="stylesheet" href="2097_pop/fontawesome/css/fontawesome-all.min.css">                <!-- https://fontawesome.com/ -->
+        <link rel="stylesheet" type="text/css" href="2097_pop/slick/slick.css"/>                       <!-- http://kenwheeler.github.io/slick/ -->
+        <link rel="stylesheet" type="text/css" href="2097_pop/slick/slick-theme.css"/>
+        <link rel="stylesheet" href="2097_pop/css/tooplate-style.css">                               <!-- Templatemo style -->
+        <link rel="stylesheet"
+	href="https://fonts.googleapis.com/css2?family=Prompt:wght@300&display=swap" >
+    
+        <script>document.documentElement.className="js";var supportsCssVars=function(){var e,t=document.createElement("style");return t.innerHTML="root: { --tmp-var: bold; }",document.head.appendChild(t),e=!!(window.CSS&&window.CSS.supports&&window.CSS.supports("font-weight","var(--tmp-var)")),t.parentNode.removeChild(t),e};supportsCssVars()||alert("Please view this in a modern browser such as latest version of Chrome or Microsoft Edge.");</script>
+        <!--------->
+    
+        <
     <style>
     .button3 {
-  background-color: white; 
-  color: black; 
-  border: 2px solid #f44336;
-}
+        background-color: white; 
+        color: black; 
+        border: 2px solid #f44336;
+    }
+    .navbar-sidebar{
+        font-family: 'Prompt', sans-serif;
+    }
+    
+
+    .main-content{
+        font-family: 'Prompt', sans-serif;
+    }
+    .page-container{
+        font-family: 'Prompt', sans-serif;
+    }
+    
     </style>
+    
 
 </head>
 
-<body class="animsition">
-    <div class="page-wrapper">
-        <!-- HEADER DESKTOP-->
-   <!-----------------------------------------------------------------------------------------------------------------------
-                                              THEME
------------------------------------------------------------------------------------------------------------------------>
-<form method="post">
-<header class="header-desktop3 d-none d-lg-block">
-    <div class="section__content section__content--p35">
-        <div class="header3-wrap">
-            <div class="header__logo">
-                <a href="../index.html">
-                    <img src="images/icon/logo_1.png" alt="AutoBot-Trader">
+<body style="background-color:#192231;">
+    <div class="page-wrapper" style="background-color:#192231;">
+    <!-----------------------------------------------------------------------------------------------------------------------
+                                                THEME
+    ----------------------------------------------------------------------------------------------------------------------->
+        <!-- MENU SIDEBAR-->
+        <aside class="menu-sidebar d-none d-lg-block"style="background-color:#131c29;" >
+            <div class="logo" style="background-color:#131c29;">
+           
+                <a href="location:../login.html">
+                    <br>
+                    <img src="images/logo_1.png" alt="Beeba" />
+                    <br><br>
                 </a>
             </div>
-            <div class="header__navbar">
-                <ul class="list-unstyled">
-                    <li class="has-sub">
-                        <a href="#">
-                            <i class="fas fa-desktop"></i>
-                            <span class="bot-line"></span>ระบบ</a>
-                        <ul class="header3-sub-list list-unstyled">
-                            <li>
-                                <a href="../login.html">เข้าสู่ระบบ</a>
-                            </li>
-                            <li>
-                                <a href="../register.html">สมัครสมาชิก</a>
-                            </li>
-                            <li class="button button3">
-                            &nbsp &nbsp &nbsp <button name = "logout" style = "color:red">ออกจากระบบ</button>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="has-sub">
-                        <a href="#">
-                            <i class="fas fa-copy"></i>
-                            <span class="bot-line"></span>เว็บไซต์</a>
-                        <ul class="header3-sub-list list-unstyled">
-                            <li>
-                                <a href="../index.html">หน้าหลัก</a>
-                            </li>
-                            <li>
-                                <a href="../static.html">สถิติ</a>
-                            </li>
-                            <li>
-                                <a href="../new.html">ข่าวสาร</a>
-                            </li>
-                            <li>
-                                <a href="../about.html">เกี่ยวกับ</a>
-                            </li>
-                            <li>
-                                <a href="../conditions.html">ข้อตกลง</a>
-                            </li>
-                            <li>
-                                <a href="../contact.html">ติดต่อ</a>
-                            </li>
-                            
-                        </ul>
-                    </li>
-                    
-                    <li class="has-sub">
-                        <a href="#">
-                            <i class="fas fa-shopping-basket"></i>
-                            <span class="bot-line"></span>บัญชี</a>
-                        <ul class="header3-sub-list list-unstyled">
-                            <li>
-                                <a href="<?php echo "editprofile.php"; ?>">แก้ไขโปรไฟล์</a>
-                            </li>
-                            <li>
-                                <a href="deposit.php">ฝากเงิน</a>
-                            </li>
-                            <li>
-                                <a href="withdrawn.php">ถอนเงิน</a>
-                            </li>
-                            
-                        </ul>
-                    </li>
-                </ul>
+            <div class="menu-sidebar__content js-scrollbar1" style="background-color:#131c29;">
+                <nav class="navbar-sidebar">
+                    <ul class="list-unstyled navbar__list">
+                        <li class="active has-sub">
+                            <a href="profile.php">
+                                <i class="fas fa-chart-bar"></i>หน้าหลัก</a>
+                        </li>
+                        <li >
+                          <a class="js-arrow" href="#">
+                              <i class="fas fa-table"></i>เกี่ยวกับการเงิน</a>
+                          <ul class="list-unstyled navbar__sub-list js-sub-list">
+                              <li> 
+                                <a href="history.php"><i class="fas fa-archive"></i>ประวัติ</a>
+                              </li>
+                              <li>
+                                <a href="deposit.php"><i class="fas fa-dollar"></i>ฝากเงิน</a>
+                              </li>
+                              <li >
+                                <a href="withdrawn.php"><i class="fas fa-dollar"></i>ถอนเงิน</a>
+                              </li>
+                      
+                          </ul>
+                      </li>
+                      <li>
+                        <a href="news.php">
+                            <i class="fas fa-file-text"></i>ข่าวสาร</a>
+                      </li>
+                      <li>
+                        <a href="contact.php">
+                            <i class="fas fa-comments"></i>ติดต่อ</a>
+                      </li>
+                    </ul>
+                </nav>
             </div>
-            <div class="header__tool">
-                <div class="fa-hover col-lg-2 col-md-2">
-                    <a href="editprofile.html">
-                        <i class="fa fa-user"></i></a>
-                </div>
-                <div class="fa-hover col-lg-5 col-md-8">
-                  <a href="../index.html">
-                    <i class="fa fa-home"></i>
-                 </a></div>
-                 <?php $image = $results['profile_image'];?>
-             
-                <div class="account-wrap">
-                    <div class="account-item account-item--style2">
-                        <div class="image">
-                            <img src="uploads/<?php echo $image ;?>" alt="Beeba">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-  </header>
-  <!----------------------------------------------------------------------------------------------------------------------->
-   
-  <!----------------------------------------------------------------------------------------------------------------------->
-  
-        </header>
-        <!-- END HEADER DESKTOP-->
-
-
-
-        <!-- PAGE CONTENT-->
-        <div class="page-content--bgf7">
-            <!-- BREADCRUMB-->
-            <section class="au-breadcrumb2">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                       
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- END BREADCRUMB-->
-
-            <!-- WELCOME-->
-            <section class="welcome p-t-10">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            
+        </aside>
+        <!-- END MENU SIDEBAR--> 
+        <form method = "post">
+        <div class="page-container" style="background-color:#192231;">
+            <!-- HEADER DESKTOP-->
+            <header class="header-desktop" style="background-color:#131c29;">
+                <div class="section__content section__content--p30" >
+                    <div class="container-fluid">
+                        <div class="header-wrap">
+                            <form class="form-header" action="" method="POST">
+                              <h3 style="font-size: 95%;"> <i class="fas fa-chart-bar"></i> หน้าหลัก</h3>
+            
+                            </form>
+                            <div class="header-button">
+                                <div class="noti-wrap">
                         
-                        <!---- notification -------->
-                            <?php if(isset($_SESSION['success'])) : ?>
-                                <div class = "success">
-                                    <h3 style="color:green">
-                                        <?php
-                                        echo $_SESSION['success'];
-                                        unset($_SESSION['success']);
-                                        ?>
-                                    </h3>
                                 </div>
-                                <?php endif ?>
-                    
-                            <?php if(isset($_SESSION['email'])) : ?>
-                                <p>welcome <strong><?php echo $_SESSION['email']; ?></strong></p>
-                                <p><a herf = "profile.php?logout='1'" style="color: red;"></a></p>
-                            <?php endif ?>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- END WELCOME-->
-            
-            <!-- STATISTIC--> 
-    
-            <!-- END STATISTIC-->
-            
-
-            <!-- DATA TABLE-->
-            <table>
-            <tr>
-                <td>
-                                <!-- TradingView Widget BEGIN -->
-            <div class="tradingview-widget-container">
-            <div id="tradingview_097ac"></div>
-            <div class="tradingview-widget-copyright"><a href="https://in.tradingview.com/symbols/BTCUSD/?exchange=BITSTAMP" rel="noopener" target="_blank"></div>
-            <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-            <script type="text/javascript">
-            new TradingView.widget(
-            {
-            "width": 980,
-            "height": 610,
-            "symbol": "BITSTAMP:BTCUSD",
-            "interval": "5",
-            "timezone": "Asia/Bangkok",
-            "theme": "light",
-            "style": "1",
-            "locale": "in",
-            "toolbar_bg": "#f1f3f6",
-            "enable_publishing": false,
-            "allow_symbol_change": true,
-            "details":true,
-            "container_id": "tradingview_097ac"
-            }
-            );
-            </script>
-            </div>
-<!-- TradingView Widget END -->
-                </td>
-                <td>
-                   <!-- TradingView Widget BEGIN -->
-<div class="tradingview-widget-container">
-  <div class="tradingview-widget-container__widget"></div>
-  <div class="tradingview-widget-copyright"><a href="https://th.tradingview.com/markets/stocks-thailand/" rel="noopener" target="_blank"><span class="blue-text">ราคาหุ้น</span></a> โดย TradingView</div>
-  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
-  {
-  "title": "หุ้น",
-  "tabs": [
-    {
-      "title": "การเงิน",
-      "symbols": [
-        {
-          "s": "NYSE:JPM",
-          "d": "เจพีมอร์แกน เชสแอนด์โค"
-        },
-        {
-          "s": "NYSE:WFC",
-          "d": "เวล ฟาร์โก โค ใหม่"
-        },
-        {
-          "s": "NYSE:BAC",
-          "d": "แบงค์ อเมอ คอร์ป"
-        },
-        {
-          "s": "NYSE:HSBC",
-          "d": "เฮชเอสบีซี โฮลดิ้ง พีแอลซี"
-        },
-        {
-          "s": "NYSE:C",
-          "d": "ซิติกรุ๊ป อิงค์"
-        },
-        {
-          "s": "NYSE:MA",
-          "d": "มาสเตอร์การ์ด อินคอร์ปอเรท"
-        }
-      ]
-    },
-    {
-      "title": "เทคโนโลยี",
-      "symbols": [
-        {
-          "s": "NASDAQ:AAPL",
-          "d": "แอปเปิ้ล"
-        },
-        {
-          "s": "NASDAQ:GOOGL",
-          "d": "กูเกิ้ล อิงค์"
-        },
-        {
-          "s": "NASDAQ:MSFT",
-          "d": "ไมโครซอฟต์ คอร์ป"
-        },
-        {
-          "s": "NASDAQ:FB",
-          "d": "เฟสบุ๊ค อิงค์"
-        },
-        {
-          "s": "NYSE:ORCL",
-          "d": "ออราเคิล คอร์ป"
-        },
-        {
-          "s": "NASDAQ:INTC",
-          "d": "อินเทล คอร์ป"
-        }
-      ]
-    },
-    {
-      "title": "บริการ",
-      "symbols": [
-        {
-          "s": "NASDAQ:AMZN",
-          "d": "อเมซอน คอม อิงค์"
-        },
-        {
-          "s": "NYSE:BABA",
-          "d": "อาลีบาบา โฮสดิ้ง ลิมิตเต็ด"
-        },
-        {
-          "s": "NYSE:T",
-          "d": "เอทีแอนด์ที อิงค์"
-        },
-        {
-          "s": "NYSE:WMT",
-          "d": "วอลมาร์ต สโตร์ อิงค์"
-        },
-        {
-          "s": "NYSE:V",
-          "d": "วีซ่า อิงค์"
-        }
-      ]
-    }
-  ],
-  "width": 400,
-  "height": 660,
-  "showChart": true,
-  "locale": "th_TH",
-  "plotLineColorGrowing": "rgba(33, 150, 243, 1)",
-  "plotLineColorFalling": "rgba(33, 150, 243, 1)",
-  "belowLineFillColorGrowing": "rgba(33, 150, 243, 0.12)",
-  "belowLineFillColorFalling": "rgba(33, 150, 243, 0.12)",
-  "gridLineColor": "#F0F3FA",
-  "scaleFontColor": "rgba(120, 123, 134, 1)",
-  "showSymbolLogo": true,
-  "symbolActiveColor": "rgba(33, 150, 243, 0.12)",
-  "colorTheme": "light"
-}
-  </script>
-</div>
-<!-- TradingView Widget END --> 
-                </td>
-            </tr>
-            <iframe width="1600" height="900" src="https://www.youtube.com/embed/SsJWUJ0ymvc/live_stream?autoplay=1&mute=1" frameborder="0"  allowfullscreen></iframe>
-            </table>
-            
-        
-            <!-- END DATA TABLE-->
-                
-            <!-- COPYRIGHT-->
-            <section class="p-t-60 p-b-20">
-                <div class="container"> 
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="copyright">
-                                <p>Copyright © 2018 Colorlib. All rights reserved. Template by <a href="https://colorlib.com">Colorlib</a>.</p>
+                                <div class="account-wrap" style="background-color:#131c29;">
+                                    <div class="account-item clearfix js-item-menu" style="background-color:#131c29;">
+                                        <div class="image">
+                                            <img src="uploads/<?php echo $image?>" alt="Profile" />
+                                        </div>
+                                        <div class="content" style="background-color:#131c29;">
+                                            <a class="js-acc-btn" href="#" style="color:white;"><?php echo $name?> <?php echo $surname?></a>
+                                        </div>
+                                        <div class="account-dropdown js-dropdown" style="background-color:#24344d;">
+                                            <div class="info clearfix">
+                                                <div class="image">
+                                                    <a href="#">
+                                                        <img src="uploads/<?php echo $image?>" alt="Profile" />
+                                                    </a>
+                                                </div>
+                                                <div class="content">
+                                                    <h5 class="name" >
+                                                        <a href="#" style="color:white;"><?php echo $name?> <?php echo $surname?></a>
+                                                    </h5>
+                                                    <span class="email" style="color:white;"><?php $emailsession = $_SESSION['email']; echo $emailsession;?></span>
+                                                </div>
+                                            </div>  
+                                            <div class="account-dropdown__item">
+                                              <a href="editprofile.php"  style="color:white;">
+                                                  <i class="zmdi zmdi-account"></i>บัญชีผู้ใช้งาน</a>
+                                          </div>
+                                            <div class="account-dropdown__footer">
+                                                <button name="logout" style="color:white;">
+                                                    <i class="zmdi zmdi-power"></i> ออกจากระบบ</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </section>
-            <!-- END COPYRIGHT-->
-            
+            </header>
+  </form>
+            <!-- END HEADER DESKTOP--> 
+        
+        
+        <!----------------------------------------------------------------------------------------------------------------------->       
+        <div class="main-content" style="background-color:#192231;">
+            <div class="container">		
+                <form method="post" action="userinvest.php">
+                    <!-- PAGE CONTENT-->
+                    <!----------------------------------------------------------------------------------------------------------------------->
+                        <!-- WELCOME-->
+                        <section class="welcome p-t-10">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        
+                                    
+                                    <!---- notification -------->
+                                        <?php if(isset($_SESSION['success'])) : ?>
+                                            <div class = "success">
+                                                <h3 style="color:green">
+                                                    <?php
+                                                    echo $_SESSION['success'];
+                                                    unset($_SESSION['success']);
+                                                    ?>
+                                                </h3>
+                                            </div>
+                                            <?php endif ?>
+                                
+                                        <?php if(isset($_SESSION['email'])) : ?>
+                                            <p>welcome <strong><?php echo $_SESSION['email']; ?></strong></p>
+                                            <p><a herf = "profile.php?logout='1'" style="color: red;"></a></p>
+                                        <?php endif ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <!-- END WELCOME-->
+                        <!--<?php echo "จำนวนเงินตอนนี้มี ".$money;?>-->
+                <div class="card login-card">	
+                    <div class="row no-gutters"  style="background-color:#222222;padding: 40px;">
+                        <div class="col-lg-8 col-md-5">
+                            <iframe width="480" height="320" src="https://www.youtube.com/embed/SsJWUJ0ymvc/live_stream?autoplay=1&mute=1" frameborder="0"  allowfullscreen></iframe>
+                        </div>
+                        <div class="col-lg-4 col-md-5">
+                            <table>
+                                <tr>
+                                    <div class="overview-item overview-item--c1">
+                                        <div class="overview__inner">
+                                            <div class="overview-box clearfix">
+                                                <div class="icon">
+                                                    <i class="zmdi zmdi-account-o"></i>
+                                                </div>
+                                                <div class="text">
+                                                    <h2>10368</h2>
+                                                    <span>จำนวนสมาชิก</span>
+                                                </div>
+                                            </div>
+                                            <br>
+                                        </div>
+                                    </div>                                   
+                                </tr>
+                                <tr>
+                                    <div class="overview-item overview-item--c4">
+                                        <div class="overview__inner">
+                                            <div class="overview-box clearfix">
+                                                <div class="icon">
+                                                    <i class="zmdi zmdi-money"></i>
+                                                </div>
+                                                <div class="text">
+                                                    <h2><?php echo $results['MONEY']?></h2>
+                                                    <span>จำนวนเงิน</span>
+                                                </div>
+                                            </div>
+                                            <br>
+                                        </div>
+                                    </div>                                    
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row no-gutters"  style="background-color:#222222;padding: 40px;">
+                        <div class="col-lg-12 col-md-3">
+                        <center><img src="images/underline3.png"></center>     
+                        </div>              
+                    </div>
+                    <div class="row no-gutters"  style="background-color:#222222;padding: 40px;">
+                        <div class="col-md-12">
+                            <center>
+                          <h1 class="wow fadeInUp" data-wow-duration="1s" data-wow-delay="100ms"><span class="text-color"> ร่วมลงทุน<span class="cursor" data-cursorDisplay="_" data-owner="some-id"></span></span></h1>		
+                        </center>
+                          <br>
+                          <h2 class="control-label mb-4">เงินลงทุน<span class="main-color">ขั้นต่ำ 1000 บาท</span> โดยแบ่งกลุ่มเงินลงทุนออกเป็น 3 ระดับดังนี้</h2>
+                          <h3 class="control-label mb-2"> <span class="main-color"><i class="fas fa-plus-circle"></i></span> 100000 บาท ขึ้นไป<span class="main-color"> กลุ่มเงินทุนระดับ 1</span></h3>
+                          <h3 class="control-label mb-2"> <span class="main-color"><i class="fas fa-plus-circle"></i></span> 10000 บาท ขึ้นไป<span class="main-color"> กลุ่มเงินทุนระดับ 2</span></h3>
+                          <h3 class="control-label mb-2"> <span class="main-color"><i class="fas fa-plus-circle"></i></span> 1000 บาท ขึ้นไป<span class="main-color"> กลุ่มเงินทุนระดับ 3</span></h3>
+                          <br>
+                          <h3 class="control-label mb-2"><span class="main-color"><i class="fas fa-warning"></i></span> เมื่อ<span class="main-color">กดปุ่มยืนยัน</span>การร่วมลงทุนแล้ว จะ<span class="main-color">ไม่สามารถร่วมลงทุนใหม่ได้ภายใน 3 วัน</span></h3>
+                        </div>
+                    </div>
+                    <div class="row no-gutters"  style="background-color:#222222;padding: 40px;">
+                        <div class="col-lg-4 col-md-5">
+                            <div class="overview-item overview-item--c2">
+                                <div class="overview__inner">
+                                    <div class="overview-box clearfix">
+                                        <div class="icon">
+                                            <i class="zmdi zmdi-money"></i>
+                                        </div>
+                                        <div class="text">
+                                            <h2><?php echo $results['INVESTMONEY']?></h2>
+                                            <span>เงินที่ร่วมลงทุน</span>
+                                        </div>
+                                    </div>
+                                   <br>
+                                </div>
+                            </div>                            
+                        </div>
+                        <div class="col-lg-1 col-md-5">
+                            
+                        </div>
+                        <div class="col-lg-5 col-md-5">
+                            <h4>ช่องกรอกเงินร่วมลงทุน</h4>
+                            <input type="number" name="s" id="investmoney" class="form-control" placeholder="จำนวนเงิน">
+                            <button type="submit" name="submits" class="btn btn-block login-btn mb-4 " style="font-size:97%;">ยืนยัน</button>
+                        </div>
+                    </div>
+                    <div class="row no-gutters"  style="background-color:#222222;padding: 40px;">
+                        <div class="col-lg-12 col-md-5">
+                            <!-- TradingView Widget BEGIN -->
+                            <div class="tradingview-widget-container"></div>
+                            <div class="tradingview-widget-copyright"><a href="https://in.tradingview.com/symbols/BTCUSD/?exchange=BITSTAMP" rel="noopener" target="_blank"></div>
+                            <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+                            <script type="text/javascript">
+                            new TradingView.widget(
+                            {
+                            "width": 800,
+                            "height": 420,
+                            "symbol": "BITSTAMP:BTCUSD",
+                            "interval": "5",
+                            "timezone": "Asia/Bangkok",
+                            "theme": "dark",
+                            "style": "1",
+                            "locale": "in",
+                            "toolbar_bg": "#f1f3f6",
+                            "enable_publishing": false,
+                            "allow_symbol_change": true,
+                            "details":true,
+                            "container_id": "tradingview_097ac"
+                            });
+                            </script>
+                            <!-- TradingView Widget END -->
+                        </div>
+                    </div>
+                                 
+                </div>
+                </form>
+            </div>    
+        
+            </div>
         </div>
-
+        <!----------------------------------------------------------------------------------------------------------------------->
     </div>
 
+    <!-----------------------------------------------------------------------------------------------------------------------
+                                                BACK
+    ----------------------------------------------------------------------------------------------------------------------->
     <!-- Jquery JS-->
     <script src="vendor/jquery-3.2.1.min.js"></script>
     <!-- Bootstrap JS-->
@@ -402,18 +395,16 @@
     <script src="vendor/circle-progress/circle-progress.min.js"></script>
     <script src="vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
     <script src="vendor/chartjs/Chart.bundle.min.js"></script>
-    <script src="vendor/select2/select2.min.js">
-    </script>
+    <script src="vendor/select2/select2.min.js"></script>
+    <script src="js/news/all.js"></script>
 
     <!-- Main JS-->
     <script src="js/main.js"></script>
     <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
     <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
-
-
-        
-        </form>
+    <!-----------------------------------------------------------------------------------------------------------------------
+                                                END BACK
+    ----------------------------------------------------------------------------------------------------------------------->
 
 </body>
-
 </html>

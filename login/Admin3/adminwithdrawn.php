@@ -92,6 +92,7 @@ function filterTable($query)
                     <td><label><?php echo $row['IDBANK'];?></label></td>
                     <td><label><?php echo $row['MONEY'];?></label></td>
                     <td><a href ="adminwithdrawn_pc.php?datehr=<?php echo $row['DATEANDHR'];?>&email=<?php echo $row['EMAIL'];?>&bank=<?php echo $row['BANK'];?>&idbank=<?php echo $row['IDBANK'];?>&money=<?php echo $row['MONEY'];?>"  >ยืนยัน</a></td>
+                    <td><a href ="adminwithdrawn_pc_Delete.php?datehr=<?php echo $row['DATEANDHR'];?>&email=<?php echo $row['EMAIL'];?>&bank=<?php echo $row['BANK'];?>&idbank=<?php echo $row['IDBANK'];?>&money=<?php echo $row['MONEY'];?>"  >ลบข้อมูล</a></td>
                     
                     
                 </tr>

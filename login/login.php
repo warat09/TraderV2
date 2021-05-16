@@ -117,6 +117,7 @@ http://www.tooplate.com/view/2097-pop
                             <td>
                               <!-- <a href="forgotpassword.php" class="text-reset">  -->
                               <div class="grid__item" id="team-link">
+                              <a href="forgotpassword.php" class="text-reset">
                               <div class="product">
                                 <div class="tm-nav-link">
                                   <i class="fas fa-comments fa-3x tm-nav-icon"></i>

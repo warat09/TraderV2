@@ -48,13 +48,16 @@ if(isset($_POST['submit'])){
             $mail->WordWrap = 50; 
             
                 if(!$mail->Send()) {
-                    echo 'Message was not sent.';
-                    echo 'ยังไม่สามารถส่งเมลล์ได้ในขณะนี้ ' . $mail->ErrorInfo;
+                    array_push($errors, "ส่งอีเมลไม่สำเร็จ");
+                    $_SESSION['error'] = "ส่งอีเมลไม่สำเร็จ";
+                    header('location: home.php');
                     exit;
+                    
                     } 
                     else {
-                    array_push($noterrors, "ส่งเมลล์สำเร็จ");
-                    $_SESSION['noterror'] = "ส่งเมลล์สำเร็จ";
+                    array_push($noterrors, "ส่งอีเมลสำเร็จ");
+                    $_SESSION['noterror'] = "ส่งอีเมลสำเร็จ";
+                    header('location: home.php#contacts');
                     }}
                 
 ?>
